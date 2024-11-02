@@ -113,7 +113,7 @@ async function handleRequest(request) {
   }
   // retry
   if (resp.status === 307) {
-    const nextUrl = response.headers.get('Location');
+    const nextUrl = resp.headers.get('Location');
     return await fetch(nextUrl.toString(), {
       method: "GET",
       headers: headers,
