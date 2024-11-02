@@ -111,6 +111,15 @@ async function handleRequest(request) {
   if (resp.status == 401) {
     return responseUnauthorized(url);
   }
+  // retry
+  if (resp.status === 307) {
+    const nextUrl = response.headers.get('Location');
+    return await fetch(nextUrl.toString(), {
+      method: "GET",
+      headers: headers,
+      redirect: "follow",
+    });
+  }
   return resp;
 }
 
