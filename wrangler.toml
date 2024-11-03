@@ -29,6 +29,9 @@ name = "cloudflare-docker-proxy"
 MODE = "production"
 TARGET_UPSTREAM = ""
 
+[env.production.observability]
+enabled = true
+
 [env.staging]
 name = "cloudflare-docker-proxy-staging"
 # route = { pattern = "docker-staging.libcuda.so", custom_domain = true }
